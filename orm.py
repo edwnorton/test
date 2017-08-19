@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-__author__ = 'Michael Liao'
+__author__ = 'EdwNorton'
 
 import asyncio, logging
 
@@ -175,6 +175,7 @@ class Model(dict, metaclass=ModelMetaclass):
         if where:
             sql.append('where')
             sql.append(where)
+            sql.append('=?')
         if args is None:
             args = []
         orderBy = kw.get('orderBy', None)
@@ -193,6 +194,7 @@ class Model(dict, metaclass=ModelMetaclass):
             else:
                 raise ValueError('Invalid limit value: %s' % str(limit))
         rs = await select(' '.join(sql), args)
+        print(' '.join(sql), args)
         return [cls(**r) for r in rs]
 
     @classmethod
