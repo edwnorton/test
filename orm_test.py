@@ -7,9 +7,9 @@ from user import User
 
 
 async def connecDB(loop):
-    username = 'zxw'
+    username = 'www-data'
     password = '1qaz!QAZ'
-    dbname = 'test'
+    dbname = 'awesome'
     await orm.create_pool(loop,user=username,password=password,db=dbname)
 
 async def destoryDB():
@@ -59,16 +59,13 @@ async def test_remove(loop):
         print('user remove:%s' % user)
     await destoryDB()
 
-#user = User(id=123, name='Michael')
-#user.save()
-#users = User.findAll()
-loop = asyncio.get_event_loop()
+if __name__ == '__main__':
+    loop = asyncio.get_event_loop()
 
-loop.run_until_complete(test_findAll(loop))
-loop.run_until_complete(test_findNumber(loop))
-loop.run_until_complete(test_find(loop))
-loop.run_until_complete(test_save(loop))
-loop.run_until_complete(test_update(loop))
-loop.run_until_complete(test_remove(loop))
-
-loop.close()
+    loop.run_until_complete(test_findAll(loop))
+    loop.run_until_complete(test_findNumber(loop))
+    loop.run_until_complete(test_find(loop))
+    loop.run_until_complete(test_save(loop))
+    loop.run_until_complete(test_update(loop))
+    loop.run_until_complete(test_remove(loop))
+    loop.close()
