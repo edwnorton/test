@@ -17,7 +17,14 @@ async def test_insert(loop):
 
 async def test_findAll(loop):
     await connecDB(loop)
-    users = await User.findAll('name','bb')
+    users = await User.findAll()
+    for user in users:
+        print('user:%s' % user)
+    await destoryDB()
+
+async def test_findAll_t(loop):
+    await connecDB(loop)
+    users = await User.findAll_t()
     for user in users:
         print('user:%s' % user)
     await destoryDB()
@@ -30,7 +37,7 @@ async def test_find(loop):
 	
 async def test_delete(loop):
     await connecDB(loop)
-    users = await User.findAll('name','Test')
+    users = await User.findAll()
     print('find users:%s' % users)
     if users is not None:
         for user in users:
@@ -40,8 +47,9 @@ async def test_delete(loop):
 
 if __name__ == "__main__":
     loop = asyncio.get_event_loop()
-    loop.run_until_complete(test_insert(loop))
+    #loop.run_until_complete(test_insert(loop))
     #loop.run_until_complete(test_find(loop))
-    loop.run_until_complete(test_findAll(loop))
-    #loop.run_until_complete(test_delete(loop))
+    loop.run_until_complete(test_findAll_t(loop))
+    #loop.run_until_complete(test_findAll(loop))
+    loop.run_until_complete(test_delete(loop))
     loop.close()
