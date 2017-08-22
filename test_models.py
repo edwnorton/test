@@ -3,14 +3,14 @@ from models import User, Blog, Comment
 import asyncio
 
 async def connecDB(loop):
-    username = 'www-data'
-    password = '1qaz!QAZ'
+    username = 'www'
+    password = 'Www123456!'
     dbname = 'awesome'
     await orm.create_pool(loop,user=username,password=password,db=dbname)
 async def destoryDB():
     await orm.destory_pool()
 async def test_insert(loop):
-    await orm.create_pool(loop, user='www-data', password='1qaz!QAZ', db='awesome')
+    await orm.create_pool(loop, user='www', password='Www123456!', db='awesome')
     u = User(name='bb', email='bb@example.com', passwd='1234567890', image='about:blank')
     await u.save()
     await destoryDB()
@@ -40,7 +40,7 @@ async def test_delete(loop):
 
 if __name__ == "__main__":
     loop = asyncio.get_event_loop()
-    #loop.run_until_complete(test_insert(loop))
+    loop.run_until_complete(test_insert(loop))
     #loop.run_until_complete(test_find(loop))
     loop.run_until_complete(test_findAll(loop))
     #loop.run_until_complete(test_delete(loop))
