@@ -19,3 +19,21 @@ update 0815
 合并某分支到当前分支：git merge <name>
 
 删除分支：git branch -d <name>
+################################################
+#         python config
+# yum install openssl-devel
+# ./configure --prefix=/usr/local/Python36
+# make && make install
+# ln -s /usr/local/Python36/bin/python3 python3
+################################################
+
+
+
+################################################
+#             
+#
+#
+#
+#
+#
+
